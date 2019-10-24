@@ -20,18 +20,20 @@ var T = new Twitter({
 });
 
 var params = {
-  user_id: "sw_help",
+  screen_name: "sw_help",
   count: 1,
 };
 
 T.get("statuses/user_timeline", params, function(err, data, response) {
   if (!err) {
     //do stuff
-    console.log("-------RESPONSE");
-    fs.writeFile("/tmp/test.txt",response)
-    console.log(response);
+    dothingshere(response);
   } else {
     console.log(err);
   }
 });
 
+
+function dothingshere(response){
+  console.log("dothingshere called");
+}
