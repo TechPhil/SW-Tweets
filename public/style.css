@@ -8,5 +8,19 @@ body {
 
 h1 {
   font-style: italic;
-  color: #373fff;
+  color: #fff;
+}
+.column {
+  float: left;
+}
+.row {
+}
+.bingotweet {
+  width: 20%;
+}
+.swtweet {
+  width: 20%;
+}
+.panel {
+  width: 60%;
 }
