@@ -1,6 +1,6 @@
 dependencies:
   express: 4.17.1
-  latest-tweets: 1.0.4
+  twitter: 1.7.1
 packages:
   /accepts/1.3.7:
     dependencies:
@@ -131,6 +131,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
+  /deep-extend/0.5.1:
+    dev: false
+    engines:
+      iojs: '>=1.0.0'
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-N8vBdOa+DF7zkRrDCsaOXoCs/E2fJfx9B9MrKnnSiHNh4ws7eSys6YQE4KvT1cecKmOASYQBhbKjeuDD9lT81w==
   /delayed-stream/1.0.0:
     dev: false
     engines:
@@ -388,15 +395,6 @@ packages:
       '0': node >=0.6.0
     resolution:
       integrity: sha1-MT5mvB5cwG5Di8G3SZwuXFastqI=
-  /latest-tweets/1.0.4:
-    dependencies:
-      request: 2.88.0
-      unescape: 0.1.1
-      xmldom: 0.1.27
-      xpath: 0.0.9
-    dev: false
-    resolution:
-      integrity: sha512-znDPYC6Io9/EqWS51+yjLjP4y0dZ6zlT/e1pq8JhwQy7bzc+6BJXPQTX9JktjhD+j2p9tsfCFZKiCp0p6LPeBg==
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -648,6 +646,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
+  /twitter/1.7.1:
+    dependencies:
+      deep-extend: 0.5.1
+      request: 2.88.0
+    dev: false
+    resolution:
+      integrity: sha1-B2I3jx3BwFDkj2ZqypBOJLGpYvQ=
   /type-is/1.6.18:
     dependencies:
       media-typer: 0.3.0
@@ -657,12 +662,6 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==
-  /unescape/0.1.1:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    resolution:
-      integrity: sha1-CYtLv3QyUrqeKPK204PpyAU1nKo=
   /unpipe/1.0.0:
     dev: false
     engines:
@@ -702,21 +701,9 @@ packages:
       '0': node >=0.6.0
     resolution:
       integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=
-  /xmldom/0.1.27:
-    dev: false
-    engines:
-      node: '>=0.1'
-    resolution:
-      integrity: sha1-1QH5ezvbQDr4757MIFcxh6rawOk=
-  /xpath/0.0.9:
-    dev: false
-    engines:
-      node: '>=0.6.0'
-    resolution:
-      integrity: sha1-s57qHq+9yOzdohrUkcjbQPAT+1Q=
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   express: ^4.16.4
-  latest-tweets: ^1.0.4
+  twitter: ^1.7.1
