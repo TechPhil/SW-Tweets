@@ -7,6 +7,9 @@ const listener = app.listen(process.env.PORT, function() {
   console.log("Listening on port " + listener.address().port);
 });
 
+//FS TEST
+const fs = require('fs');
+
 //TWITTER
 var Twitter = require("twitter");
 var T = new Twitter({
@@ -17,18 +20,18 @@ var T = new Twitter({
 });
 
 var params = {
-  q: "from:sw_help",
+  user_id: "sw_help",
   count: 1,
-  result_type: "recent",
-  lang: "en"
 };
 
-T.get("search/tweets", params, function(err, data, response) {
+T.get("statuses/user_timeline", params, function(err, data, response) {
   if (!err) {
     //do stuff
-    console.log(data);
+    console.log("-------RESPONSE");
+    fs.writeFile("/tmp/test.txt",response)
     console.log(response);
   } else {
     console.log(err);
   }
 });
+
