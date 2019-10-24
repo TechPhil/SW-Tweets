@@ -3,10 +3,8 @@
 
 // prints "hi" in the browser's dev tools console
 console.log("hi");
-
 const fs = require('fs');
-setTimeout(function(){
-  var text = fs.readFileSync("response.txt");
-document.getElementById("responsetext").innerHTML = "text";
-},1000)
+window.onload = function () {
+document.getElementById("responsetxt").innerHTML = "text";
+}
 
