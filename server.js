@@ -24,7 +24,8 @@ var params = {
   count: 1
 };
 
-T.get("statuses/user_timeline", params, function(err, data, response) {
+function getUpdate() {
+  T.get("statuses/user_timeline", params, function(err, data, response) {
   if (!err) {
     //do stuff
     dothingshere(response);
@@ -32,7 +33,9 @@ T.get("statuses/user_timeline", params, function(err, data, response) {
     console.log(err);
   }
 });
-
+}
+getUpdate();
+setInterval(getUpdate,10000);
 function dothingshere(response) {
   console.log("dothingshere called");
   fs.writeFile("public/response.txt", response);
