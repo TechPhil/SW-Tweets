@@ -3,8 +3,10 @@
 
 // prints "hi" in the browser's dev tools console
 console.log("hi");
-const fs = require('fs');
-window.onload = function () {
-document.getElementById("responsetxt").innerHTML = "text";
-}
 
+window.onload = function() {
+  console.log("doing shiz");
+  fetch("response.txt");
+  .then
+  document.getElementById("responsetxt").innerHTML = "text";
+};

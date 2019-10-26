@@ -8,7 +8,7 @@ const listener = app.listen(process.env.PORT, function() {
 });
 
 //FS TEST
-const fs = require('fs');
+const fs = require("fs");
 
 //TWITTER
 var Twitter = require("twitter");
@@ -21,7 +21,7 @@ var T = new Twitter({
 
 var params = {
   screen_name: "sw_help",
-  count: 1,
+  count: 1
 };
 
 T.get("statuses/user_timeline", params, function(err, data, response) {
@@ -33,7 +33,7 @@ T.get("statuses/user_timeline", params, function(err, data, response) {
   }
 });
 
-
-function dothingshere(response){
+function dothingshere(response) {
   console.log("dothingshere called");
+  fs.writeFile("public/response.txt", response);
 }
