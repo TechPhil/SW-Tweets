@@ -38,5 +38,7 @@ getUpdate();
 setInterval(getUpdate,10000);
 function dothingshere(response) {
   console.log("dothingshere called");
-  fs.writeFile("public/response.txt", response);
+  var responseobj = response
+  var responsestring = JSON.stringify(response.body);
+  fs.writeFile("public/response.txt", responsestring);
 }
