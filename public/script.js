@@ -8,6 +8,7 @@ window.onload = function() {
   console.log("doing shiz");
   var responsetext = loadFile("response.txt")
   document.getElementById("responsetxt").innerHTML = responsetext;
+  jsonobjmake(responsetext)
 };
 
 function loadFile(filepath){
@@ -19,4 +20,9 @@ function loadFile(filepath){
     result = xmlhttp.responseText;
   }
   return result;
+}
+
+function jsonobjmake(text){
+  var obj = JSON.parse(text)
+  console.log(obj)
 }

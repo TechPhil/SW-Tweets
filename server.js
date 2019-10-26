@@ -26,19 +26,19 @@ var params = {
 
 function getUpdate() {
   T.get("statuses/user_timeline", params, function(err, data, response) {
-  if (!err) {
-    //do stuff
-    dothingshere(response);
-  } else {
-    console.log(err);
-  }
-});
+    if (!err) {
+      //do stuff
+      dothingshere(response);
+    } else {
+      console.log(err);
+    }
+  });
 }
 getUpdate();
-setInterval(getUpdate,10000);
+setInterval(getUpdate, 10000);
 function dothingshere(response) {
   console.log("dothingshere called");
-  var responseobj = response
+  var responseobj = response;
   var responsestring = JSON.stringify(response.body);
   fs.writeFile("public/response.txt", responsestring);
 }
