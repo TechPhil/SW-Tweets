@@ -37,7 +37,6 @@ function jsonobjmake(text) {
   );
 }
 
-var searchterms = ["Sample search one", "Sample search two"];
 const searchList = document.getElementById("search");
 const searchForm = document.forms[0];
 const searchInput = searchForm.elements["search"];
@@ -48,9 +47,9 @@ const appendNewSearch = function(search) {
   searchList.appendChild(newSearchItem);
 };
 
-searchterms.forEach(function(search) {
-  appendNewSearch(search);
-});
+//searchterms.forEach(function(search) {
+//appendNewSearch(search);
+//});
 
 searchForm.onsubmit = function(event) {
   event.preventDefault();
@@ -60,12 +59,15 @@ searchForm.onsubmit = function(event) {
   fetch("/editSearch", {
     method: "POST",
     body: JSON.stringify(data),
-    headers: { "Content-Type": "application.json" }
+    headers: { "Content-Type": "application/json" }
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(JSON.stringify(data));
-    
-    appendNewSearch(data.)
-  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(JSON.stringify(data));
+
+      appendNewSearch(data.search);
+
+      searchInput.value = "";
+      searchInput.focus();
+    });
 };

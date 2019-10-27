@@ -49,9 +49,9 @@ app.use(bodyParser.json());
 
 // receives data from our form on the client, edits the string, and passes the edited string back to the client
 app.post('/editSearch', function(request, response) {
-  const dream = request.body.dream;
-  console.log(dream);
+  const search = request.body.search;
+  console.log(search);
   
-  const editedDream = `edited-${dream}`;
-  response.send({ dream: editedDream})
+  const editedSearch = `edited-${search}`;
+  response.send({ search: editedSearch})
 });
