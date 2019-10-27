@@ -104,21 +104,22 @@ setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 se
 function getDict() {
   fs.readFile("public/searchterms.txt", "utf-8", function(err, data) {
     if (!err) {
-      console.log(data);
+      console.log("no error in file read");
+      console.log("data - "+data);
       var dict = JSON.parse(data);
-      console.log(dict);
-      return dict;
+      console.log("dict - "+dict);
+      return JSON.parse(data);
     } else {
-      console.log(err);
+      console.log("err - "+err);
     }
   });
 }
 
 function isnewTweet(id, obj) {
-  console.log(id);
-  var dict = getDict();
-  console.log(dict);
-  newTweetCheck(dict, id, obj);
+  console.log("new tweet id - "+id);
+  var newdict = getDict();
+  console.log("new dict -"+newdict);
+  newTweetCheck(newdict, id, obj);
 }
 
 function newTweetCheck(dict, id, obj) {
