@@ -3,6 +3,7 @@ setInterval(updateText, 10000); //Check every 10 seconds
 
 function updateText() {
   //Check response.txt for updates
+  updateCounts();
   var responsetext = loadFile("response.txt"); //Load response.txt
   document.getElementById("responsetxt").innerHTML = responsetext; //Placeholder - set element to contain raw response.
   jsonobjmake(responsetext); //Make text into JSON object for easy manipulation
@@ -87,5 +88,12 @@ searchForm.onsubmit = function(event) {
 };
 
 function updateCounts(){
-  var dcount = document.getElementById("delayno")
+  var dcount = document.getElementById("delayno");
+  var lcount = document.getElementById("lateno");
+  var ccount = document.getElementById("cancelno");
+  var dictfile = loadFile("searchterms.txt");
+  var obj = JSON.parse(dictfile);
+  dcount.innerHTML = obj.delay;
+  lcount.innerHTML = obj.late;
+  ccount.innerHTML = obj.cancel;
 }

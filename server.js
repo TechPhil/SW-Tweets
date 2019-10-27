@@ -132,7 +132,15 @@ function idsdifferent(dict, obj) {
   var tweettext = obj[0].full_text;
   var hasdelay = tweettext.toLowerCase().includes("delay");
   var haslate = tweettext.toLowerCase().includes("late");
-  console.log("Status - Delay: " + hasdelay + " Late: " + haslate);
+  var hascancel = tweettext.toLowerCase().includes("cancel");
+  console.log(
+    "Status - Delay: " +
+      hasdelay +
+      " Late: " +
+      haslate +
+      " Cancel: " +
+      hascancel
+  );
   if (hasdelay) {
     dict.delay = dict.delay + 1;
     console.log("Delay count now " + dict.delay);
@@ -140,5 +148,9 @@ function idsdifferent(dict, obj) {
   if (haslate) {
     dict.late = dict.late + 1;
     console.log("Delay count now " + dict.late);
+  }
+  if (hascancel) {
+    dict.cancel = dict.cancel + 1;
+    console.log("Cancel count now " + dict.cancel);
   }
 }
