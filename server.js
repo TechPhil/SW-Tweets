@@ -101,18 +101,24 @@ app.post("/addLate", function(request, response) {
 //Run functions
 getUpdate(); //Start function on page-load.
 setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 seconds.
-
-function isnewTweet(id, obj) {
-  console.log(id);
+function getDict() {
   fs.readFile("public/searchterms.txt", "utf-8", function(err, data) {
     if (!err) {
+      console.log(data);
       var dict = JSON.parse(data);
       console.log(dict);
-      newTweetCheck(dict, id, obj);
+      return dict;
     } else {
       console.log(err);
     }
   });
+}
+
+function isnewTweet(id, obj) {
+  console.log(id);
+  var dict = getDict();
+  console.log(dict);
+  newTweetCheck(dict, id, obj);
 }
 
 function newTweetCheck(dict, id, obj) {
@@ -155,4 +161,16 @@ function idsdifferent(dict, obj) {
     console.log("Cancel count now " + dict.cancel);
   }
 }
-setInterv
+setInterval(function() {
+  var date = new Date();
+  if (date.getHours() == 0 && date.getMinutes() == 0) {
+    resetCounts();
+  }
+}, 60000);
+
+function resetCounts() {
+  var dict = getDict();
+  dict.delay = 0;
+  dict.late = 0;
+  dict.cancel = 0;
+}
