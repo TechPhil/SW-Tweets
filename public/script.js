@@ -71,7 +71,7 @@ searchForm.onsubmit = function(event) {
 
   const data = { search: searchInput.value };
 
-  fetch("/editSearch", {
+  fetch("/countReset", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json" }

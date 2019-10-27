@@ -1,1 +1,1 @@
-{"latest_id":"1188529777117937671","delay":0,"late":0,"cancel":1}
+{"latest_id":"1188542330673995776","delay":0,"late":0,"cancel":0}

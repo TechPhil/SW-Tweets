@@ -23,8 +23,8 @@ var T = new Twitter({
 
 var params = {
   //Set parameters of twitter request.
-  //screen_name: "sw_help",
-  screen_name: "techphilyt",
+  screen_name: "sw_help",
+  //screen_name: "techphilyt",
   count: 1,
   tweet_mode: "extended"
 };
@@ -141,7 +141,9 @@ function resetCounts(){
   dict.latest_id = '0';
   dict.delay = 0;
   dict.late = 0;
-  dict.cancel = 1;
+  dict.cancel = 0;
+  var dicttext = JSON.stringify(dict);
+  fs.writeFile("public/searchterms.txt", dicttext);
 }
 
 function getDictionary(){
@@ -149,3 +151,22 @@ function getDictionary(){
   var dictobj = JSON.parse(dict);
   return dictobj
 }
+
+
+//Deals with client-to-server transmission
+var bodyParser = require("body-parser"); //Import body-parser library
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// receives data from our form on the client, edits the string, and passes the edited string back to the client
+app.post("/countReset", function(request, response) {
+  const search = request.body.search;
+  console.log(search);
+  var resetkey = "elephant";
+  if(search==resetkey){
+    resetCounts();
+    response.send({ search: "Counters reset!" });
+  } else{
+    response.send({ search: "Incorrect access code" });
+  }
+});
