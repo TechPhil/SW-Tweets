@@ -40,5 +40,6 @@ function dothingshere(response) {
   console.log("dothingshere called");
   var responseobj = response;
   var responsestring = JSON.stringify(response.body);
+  console.log(responsestring);
   fs.writeFile("public/response.txt", responsestring);
 }
