@@ -40,8 +40,25 @@ setInterval(getUpdate, 10000);
 function dothingshere(response) {
   console.log("dothingshere called");
   fs.writeFile("public/response.txt", response.body);
-  var tweetobj = response.body;
-  if(tweetobj[0].)
+  var tweetobj = JSON.parse(response.body);
+  if(tweetobj[0].in_reply_to_status_id){
+    console.log("Replying");
+    console.log(tweetobj[0].in_reply_to_status_id);
+    var params ={
+      id: tweetobj[0].in_reply_to_status_id_str,
+      tweet_mode: "extended"
+    };
+    T.get("statuses/show", params, function(err, data, response){
+      if (!err){
+        //Do things
+        fs.writeFile("public/reply.txt",response.body);
+      } else{
+        console.log(err);
+      }
+    })
+  } else{
+    fs.WriteFile("public/reply.txt","Not in reply to any tweet.");
+  }
   
 }
 

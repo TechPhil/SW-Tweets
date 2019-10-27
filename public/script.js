@@ -38,9 +38,11 @@ function jsonobjmake(text) {
     -11
   );
   if(obj[0].in_reply_to_status_id){
+    console.log("IN REPLY");
     document.getElementById("replydiv").style.display = 'block';
     var replytext = loadFile("reply.txt");
-    document.getElementByID("replytext").innerHTML = replytext;
+    var replyobj = JSON.parse()
+    document.getElementById("replytext").innerHTML = replytext;
   } else {
     document.getElementById("replydiv").style.display = 'none';
   }
