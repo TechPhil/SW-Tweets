@@ -57,7 +57,7 @@ function dothingshere(response) {
       }
     })
   } else{
-    fs.WriteFile("public/reply.txt","Not in reply to any tweet.");
+    fs.writeFile("public/reply.txt","Not in reply to any tweet.");
   }
   
 }
