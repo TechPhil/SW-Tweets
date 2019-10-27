@@ -1,21 +1,13 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+window.onload = updateText(); //On load, check for latest updates
+setInterval(updateText, 10000); //Check every 10 seconds
 
-// prints "hi" in the browser's dev tools console
-console.log("hi");
-
-window.onload = updateText();
-setInterval(updateText, 10000);
-
-function updateText() {
-  console.log("doing shiz");
-  var responsetext = loadFile("response.txt");
-  document.getElementById("responsetxt").innerHTML = responsetext;
-  jsonobjmake(responsetext);
-  
-  var searchtext = loadFile("searchterms.txt");
+function updateText() { //Check response.txt for updates
+  var responsetext = loadFile("response.txt"); //Load response.txt
+  document.getElementById("responsetxt").innerHTML = responsetext; //Placeholder - set element to contain raw response.
+  jsonobjmake(responsetext); //Make text into JSON object for easy manipulation
 }
 
+//Make GET Requests to text files - server-client comms
 function loadFile(filepath) {
   var result = null;
   var xmlhttp = new XMLHttpRequest();
@@ -37,14 +29,18 @@ function jsonobjmake(text) {
     0,
     -11
   );
-  if(obj[0].in_reply_to_status_id){
+  if (obj[0].in_reply_to_status_id) {
     console.log("IN REPLY");
-    document.getElementById("replydiv").style.display = 'block';
+    document.getElementById("replydiv").style.display = "block";
     var replytext = loadFile("reply.txt");
     var replyobj = JSON.parse(replytext);
-    document.getElementById("replytext").innerHTML = "In reply to tweet from @"+replyobj.user.screen_name+" - "+replyobj.full_text;
+    document.getElementById("replytext").innerHTML =
+      "In reply to tweet from @" +
+      replyobj.user.screen_name +
+      " - " +
+      replyobj.full_text;
   } else {
-    document.getElementById("replydiv").style.display = 'none';
+    document.getElementById("replydiv").style.display = "none";
   }
 }
 
