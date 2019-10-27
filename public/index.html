@@ -8,12 +8,30 @@
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-
+    <!--Pure CSS-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+      crossorigin="anonymous"
+    />
+    <!--[if lte IE 8]>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css"
+      />
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"
+    />
+    <!--<![endif]-->
     <!-- import the webpage's javascript file -->
   </head>
   <body>
-    <div class="row">
-      <div class="column swtweet">
+    <div class="row pure-g">
+      <div class="column pure-u-5-24 swtweet">
         <a
           class="twitter-timeline"
           data-height="600"
@@ -27,7 +45,7 @@
           charset="utf-8"
         ></script>
       </div>
-      <div class="column bingotweet">
+      <div class="column pure-u-5-24 bingotweet">
         <a
           class="twitter-timeline"
           data-height="600"
@@ -41,7 +59,7 @@
           charset="utf-8"
         ></script>
       </div>
-      <div class="column panel">
+      <div class="column pure-u-14-24 panel">
         <div class="row">
           <h1>
             Welcome to the SWR Bingo Bot Admin Panel!
@@ -55,7 +73,6 @@
             <h3 id="responsetxt">
               ResponseText
             </h3>
-            
           </div>
         </div>
         <center></center>

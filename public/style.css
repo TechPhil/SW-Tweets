@@ -6,24 +6,17 @@ body {
   background-color: #00b8ff;
 }
 
+body, html{
+  margin-left:1%;
+  margin-right:1%;
+  margin-bottom:1%;
+  margin-top:1%;
+}
+
 h1 {
   font-style: italic;
   color: #fff;
 }
 h3 {
   color: #000
-}
-.column {
-  float: left;
-}
-.row {
-}
-.bingotweet {
-  width: 20%;
-}
-.swtweet {
-  width: 20%;
-}
-.panel {
-  width: 60%;
 }
