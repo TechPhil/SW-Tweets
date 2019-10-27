@@ -82,13 +82,48 @@
                 placeholder="Search"
                 aria-labelledby="submit-search"
               />
-              <button type="submit" id="submit-search" class="pure-button pure-button-primary">
+              <button
+                type="submit"
+                id="submit-search"
+                class="pure-button pure-button-primary"
+              >
                 Submit Search
               </button>
             </form>
             <h4>
               We are currently searching for -
             </h4>
+
+            <table class="pure-table pure-table-bordered pure-table-striped" style="background-color:#fff">
+              <thead>
+                <tr>
+                  <th>Search Term</th>
+                  <th>Mentions Today</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="termone"></td>
+                  <td id="mentionsone"></td>
+                </tr>
+                <tr>
+                  <td id="termtwo"></td>
+                  <td id="mentionstwo"></td>
+                </tr>
+                <tr>
+                  <td id="termthree"></td>
+                  <td id="mentionsthree"></td>
+                </tr>
+                <tr>
+                  <td id="termfour"></td>
+                  <td id="mentionsfour"></td>
+                </tr>
+                <tr>
+                  <td id="termfive"></td>
+                  <td id="mentionsfive"></td>
+                </tr>
+              </tbody>
+            </table>
             <section class="search">
               <ul id="search"></ul>
             </section>
