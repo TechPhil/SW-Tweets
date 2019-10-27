@@ -5,29 +5,22 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
+    
     <!--Pure CSS-->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous"/>
     <!--[if lte IE 8]>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css"
-      />
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css"/>
     <![endif]-->
     <!--[if gt IE 8]><!-->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"/>
     <!--<![endif]-->
-    <!-- import the webpage's javascript file -->
+    
+    <!--Odometer-->
+    <script src="lib/odometer.min.js"></script>
+    <link rel="stylesheet" href="lib/odometer-theme-minimal.css"/>
   </head>
   <body>
     <div class="row pure-g">
@@ -104,23 +97,23 @@
               <tbody>
                 <tr>
                   <td id="termone"></td>
-                  <td id="mentionsone"></td>
+                  <td id="mentionsone" class="odometer">0</td>
                 </tr>
                 <tr>
                   <td id="termtwo"></td>
-                  <td id="mentionstwo"></td>
+                  <td id="mentionstwo" class="odometer">0</td>
                 </tr>
                 <tr>
                   <td id="termthree"></td>
-                  <td id="mentionsthree"></td>
+                  <td id="mentionsthree" class="odometer">0</td>
                 </tr>
                 <tr>
                   <td id="termfour"></td>
-                  <td id="mentionsfour"></td>
+                  <td id="mentionsfour" class="odometer">0</td>
                 </tr>
                 <tr>
                   <td id="termfive"></td>
-                  <td id="mentionsfive"></td>
+                  <td id="mentionsfive" class="odometer">0</td>
                 </tr>
               </tbody>
             </table>
