@@ -102,17 +102,21 @@ app.post("/addLate", function(request, response) {
 getUpdate(); //Start function on page-load.
 setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 seconds.
 function getDict() {
+  console.log("getting dict");
+  var dict;
   fs.readFile("public/searchterms.txt", "utf-8", function(err, data) {
     if (!err) {
       console.log("no error in file read");
       console.log("data - "+data);
-      var dict = JSON.parse(data);
+      dict = JSON.parse(data);
       console.log("dict - "+dict);
-      return JSON.parse(data);
     } else {
       console.log("err - "+err);
     }
   });
+  console.log(dict)
+  return dict;
+  console.log("after fs");
 }
 
 function isnewTweet(id, obj) {
