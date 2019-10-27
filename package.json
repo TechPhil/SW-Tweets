@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "body-parser": "^1.19.0"
   },
   "engines": {
     "node": "8.x"

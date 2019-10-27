@@ -41,3 +41,17 @@ function dothingshere(response) {
   console.log("dothingshere called");
   fs.writeFile("public/response.txt", response.body);
 }
+
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// receives data from our form on the client, edits the string, and passes the edited string back to the client
+app.post('/editSearch', function(request, response) {
+  const dream = request.body.dream;
+  console.log(dream);
+  
+  const editedDream = `edited-${dream}`;
+  response.send({ dream: editedDream})
+});
