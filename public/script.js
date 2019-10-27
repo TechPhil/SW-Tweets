@@ -41,8 +41,8 @@ function jsonobjmake(text) {
     console.log("IN REPLY");
     document.getElementById("replydiv").style.display = 'block';
     var replytext = loadFile("reply.txt");
-    var replyobj = JSON.parse()
-    document.getElementById("replytext").innerHTML = replytext;
+    var replyobj = JSON.parse(replytext);
+    document.getElementById("replytext").innerHTML = "In reply to tweet from @"+replyobj.user.screen_name+" - "+replyobj.full_text;
   } else {
     document.getElementById("replydiv").style.display = 'none';
   }
