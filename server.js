@@ -54,6 +54,8 @@ function parseTweetforReply(respbody) {
   } else {
     fs.writeFile("public/reply.txt", "Not in reply to any tweet.");
   }
+  var tweetid = tweetobj[0].id_str;
+  isnewTweet(tweetid);
 }
 
 function tweethasreply(tweetobj) {
@@ -80,7 +82,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // receives data from our form on the client, edits the string, and passes the edited string back to the client
-app.post("/editSearch", function(request, response) {
+app.post("/addDelay", function(request, response) {
+  const search = request.body.search;
+  console.log(search);
+
+  const editedSearch = `edited-${search}`;
+  response.send({ search: editedSearch });
+});
+app.post("/addLate", function(request, response) {
   const search = request.body.search;
   console.log(search);
 
@@ -91,3 +100,12 @@ app.post("/editSearch", function(request, response) {
 //Run functions
 getUpdate(); //Start function on page-load.
 setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 seconds.
+
+
+
+
+function isnewTweet(tweetid){
+  console.log(tweetid)
+  var dict = fetch("public/searchterms.txt")
+  console.log(dict)
+}
