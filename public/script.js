@@ -4,12 +4,15 @@
 // prints "hi" in the browser's dev tools console
 console.log("hi");
 
-window.onload = function() {
+window.onload = updateText()
+setInterval(updateText,10000);
+
+function updateText(){
   console.log("doing shiz");
   var responsetext = loadFile("response.txt")
   document.getElementById("responsetxt").innerHTML = responsetext;
   jsonobjmake(responsetext)
-};
+}
 
 function loadFile(filepath){
   var result = null;
@@ -28,3 +31,9 @@ function jsonobjmake(text){
   console.log(obj[0].full_text)
   document.getElementById("responsetxt").innerHTML = obj[0].full_text;
 }
+
+
+var searchterms = [
+  'Sample search one',
+  'Sample search two'
+]
