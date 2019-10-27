@@ -55,7 +55,7 @@ function parseTweetforReply(respbody) {
     fs.writeFile("public/reply.txt", "Not in reply to any tweet.");
   }
   var tweetid = tweetobj[0].id_str;
-  isnewTweet(tweetid);
+  isnewTweet(tweetid,tweetobj);
 }
 
 function tweethasreply(tweetobj) {
@@ -117,12 +117,21 @@ function isnewTweet(id){
   })
 }
 
-function newTweetCheck(dict,id){
+function newTweetCheck(dict,id,obj){
   console.log(dict.latest_id)
   console.log(id)
   if(id!=dict.latest_id){
+    console.log("ids different");
    dict.latest_id = id; 
+    idsdifferent(dict,obj)
+  } else {
+    console.log("ids same");
   }
   var dicttext = JSON.stringify(dict);
   fs.writeFile("public/searchterms.txt",dicttext)
+}
+
+function idsdifferent(dict,obj){
+  var tweettext = obj[0].full_text;
+  var hasdelay = tweettext.includes("")
 }
