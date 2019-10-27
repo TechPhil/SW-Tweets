@@ -24,6 +24,7 @@ var T = new Twitter({
 var params = {
   //Set parameters of twitter request.
   screen_name: "sw_help",
+  //screen_name: "techphilyt",
   count: 1,
   tweet_mode: "extended"
 };
@@ -147,10 +148,11 @@ function idsdifferent(dict, obj) {
   }
   if (haslate) {
     dict.late = dict.late + 1;
-    console.log("Delay count now " + dict.late);
+    console.log("Late count now " + dict.late);
   }
   if (hascancel) {
     dict.cancel = dict.cancel + 1;
     console.log("Cancel count now " + dict.cancel);
   }
 }
+setInterv
