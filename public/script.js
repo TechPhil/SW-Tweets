@@ -85,3 +85,7 @@ searchForm.onsubmit = function(event) {
       searchInput.focus();
     });
 };
+
+function updateCounts(){
+  var dcount = document.getElementById("delayno")
+}

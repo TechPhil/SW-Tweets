@@ -55,7 +55,7 @@ function parseTweetforReply(respbody) {
     fs.writeFile("public/reply.txt", "Not in reply to any tweet.");
   }
   var tweetid = tweetobj[0].id_str;
-  isnewTweet(tweetid,tweetobj);
+  isnewTweet(tweetid, tweetobj);
 }
 
 function tweethasreply(tweetobj) {
@@ -101,37 +101,44 @@ app.post("/addLate", function(request, response) {
 getUpdate(); //Start function on page-load.
 setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 seconds.
 
-
-
-
-function isnewTweet(id){
-  console.log(id)
-  fs.readFile("public/searchterms.txt", 'utf-8',function (err,data){
-    if (!err){
+function isnewTweet(id, obj) {
+  console.log(id);
+  fs.readFile("public/searchterms.txt", "utf-8", function(err, data) {
+    if (!err) {
       var dict = JSON.parse(data);
-      console.log(dict)
-      newTweetCheck(dict,id);
+      console.log(dict);
+      newTweetCheck(dict, id, obj);
     } else {
-      console.log(err)
+      console.log(err);
     }
-  })
+  });
 }
 
-function newTweetCheck(dict,id,obj){
-  console.log(dict.latest_id)
-  console.log(id)
-  if(id!=dict.latest_id){
+function newTweetCheck(dict, id, obj) {
+  console.log(dict.latest_id);
+  console.log(id);
+  if (id != dict.latest_id) {
     console.log("ids different");
-   dict.latest_id = id; 
-    idsdifferent(dict,obj)
+    dict.latest_id = id;
+    idsdifferent(dict, obj);
   } else {
     console.log("ids same");
   }
   var dicttext = JSON.stringify(dict);
-  fs.writeFile("public/searchterms.txt",dicttext)
+  fs.writeFile("public/searchterms.txt", dicttext);
 }
 
-function idsdifferent(dict,obj){
+function idsdifferent(dict, obj) {
   var tweettext = obj[0].full_text;
-  var hasdelay = tweettext.includes("")
+  var hasdelay = tweettext.toLowerCase().includes("delay");
+  var haslate = tweettext.toLowerCase().includes("late");
+  console.log("Status - Delay: " + hasdelay + " Late: " + haslate);
+  if (hasdelay) {
+    dict.delay = dict.delay + 1;
+    console.log("Delay count now " + dict.delay);
+  }
+  if (haslate) {
+    dict.late = dict.late + 1;
+    console.log("Delay count now " + dict.late);
+  }
 }
