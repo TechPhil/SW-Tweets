@@ -123,5 +123,6 @@ function newTweetCheck(dict,id){
   if(id!=dict.latest_id){
    dict.latest_id = id; 
   }
-  fs.writeFile("public/searchterms.txt",dict)
+  var dicttext = JSON.stringify(dict);
+  fs.writeFile("public/searchterms.txt",dicttext)
 }

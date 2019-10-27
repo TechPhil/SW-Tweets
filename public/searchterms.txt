@@ -1,1 +1,1 @@
-[object Object]
+{"latest_id":"1188515421923794944","delay":0,"late":0}
