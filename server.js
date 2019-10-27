@@ -104,8 +104,24 @@ setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 se
 
 
 
-function isnewTweet(tweetid){
-  console.log(tweetid)
-  var dict = fetch("public/searchterms.txt")
-  console.log(dict)
+function isnewTweet(id){
+  console.log(id)
+  fs.readFile("public/searchterms.txt", 'utf-8',function (err,data){
+    if (!err){
+      var dict = JSON.parse(data);
+      console.log(dict)
+      newTweetCheck(dict,id);
+    } else {
+      console.log(err)
+    }
+  })
+}
+
+function newTweetCheck(dict,id){
+  console.log(dict.latest_id)
+  console.log(id)
+  if(id!=dict.latest_id){
+   dict.latest_id = id; 
+  }
+  fs.writeFile("public/searchterms.txt",dict)
 }
