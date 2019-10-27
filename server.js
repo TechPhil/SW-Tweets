@@ -23,8 +23,8 @@ var T = new Twitter({
 
 var params = {
   //Set parameters of twitter request.
-  screen_name: "sw_help",
-  //screen_name: "techphilyt",
+  //screen_name: "sw_help",
+  screen_name: "techphilyt",
   count: 1,
   tweet_mode: "extended"
 };
@@ -77,53 +77,16 @@ function tweethasreply(tweetobj) {
   });
 }
 
-//Deals with client-to-server transmission
-var bodyParser = require("body-parser"); //Import body-parser library
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-// receives data from our form on the client, edits the string, and passes the edited string back to the client
-app.post("/addDelay", function(request, response) {
-  const search = request.body.search;
-  console.log(search);
-
-  const editedSearch = `edited-${search}`;
-  response.send({ search: editedSearch });
-});
-app.post("/addLate", function(request, response) {
-  const search = request.body.search;
-  console.log(search);
-
-  const editedSearch = `edited-${search}`;
-  response.send({ search: editedSearch });
-});
 
 //Run functions
 getUpdate(); //Start function on page-load.
 setInterval(getUpdate, 10000); //cause the getUpdate function to run every 10 seconds.
-function getDict() {
-  console.log("getting dict");
-  var dict;
-  fs.readFile("public/searchterms.txt", "utf-8", function(err, data) {
-    if (!err) {
-      console.log("no error in file read");
-      console.log("data - "+data);
-      dict = JSON.parse(data);
-      console.log("dict - "+dict);
-    } else {
-      console.log("err - "+err);
-    }
-  });
-  console.log(dict)
-  return dict;
-  console.log("after fs");
-}
 
 function isnewTweet(id, obj) {
-  console.log("new tweet id - "+id);
-  var newdict = getDict();
-  console.log("new dict -"+newdict);
-  newTweetCheck(newdict, id, obj);
+  console.log(id);
+  var dict = getDictionary();
+  newTweetCheck(dict, id, obj);
 }
 
 function newTweetCheck(dict, id, obj) {
@@ -166,16 +129,23 @@ function idsdifferent(dict, obj) {
     console.log("Cancel count now " + dict.cancel);
   }
 }
-setInterval(function() {
+setInterval(function(){
   var date = new Date();
-  if (date.getHours() == 0 && date.getMinutes() == 0) {
+  if(date.getHours() == 0 && date.getMinutes() == 0){
     resetCounts();
   }
-}, 60000);
+},60000)
 
-function resetCounts() {
-  var dict = getDict();
+function resetCounts(){
+  var dict = getDictionary()
+  dict.latest_id = '0';
   dict.delay = 0;
   dict.late = 0;
-  dict.cancel = 0;
+  dict.cancel = 1;
+}
+
+function getDictionary(){
+  var dict = fs.readFileSync("public/searchterms.txt","utf-8")
+  var dictobj = JSON.parse(dict);
+  return dictobj
 }
