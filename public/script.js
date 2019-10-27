@@ -1,7 +1,8 @@
 window.onload = updateText(); //On load, check for latest updates
 setInterval(updateText, 10000); //Check every 10 seconds
 
-function updateText() { //Check response.txt for updates
+function updateText() {
+  //Check response.txt for updates
   var responsetext = loadFile("response.txt"); //Load response.txt
   document.getElementById("responsetxt").innerHTML = responsetext; //Placeholder - set element to contain raw response.
   jsonobjmake(responsetext); //Make text into JSON object for easy manipulation
@@ -20,29 +21,35 @@ function loadFile(filepath) {
 }
 
 function jsonobjmake(text) {
-  var obj = JSON.parse(text);
-  console.log(obj);
-  console.log(obj[0].full_text);
-  console.log(obj[0].created_at);
-  document.getElementById("responsetxt").innerHTML = obj[0].full_text;
+  //Parses JSON text into an object for easy handling.
+  var obj = JSON.parse(text); //Parse into object
+  console.log(obj); //Log object in console for debug
+  console.log(obj[0].full_text); //Log tweet body into console
+  console.log(obj[0].created_at); //Log tweet timestamp into console.
+  document.getElementById("responsetxt").innerHTML = obj[0].full_text; //Places tweet body on screen
   document.getElementById("responsetime").innerHTML = obj[0].created_at.slice(
     0,
     -11
-  );
+  ); //Cut last 11 characters off timestamp, then place on page.
   if (obj[0].in_reply_to_status_id) {
-    console.log("IN REPLY");
-    document.getElementById("replydiv").style.display = "block";
-    var replytext = loadFile("reply.txt");
-    var replyobj = JSON.parse(replytext);
-    document.getElementById("replytext").innerHTML =
-      "In reply to tweet from @" +
-      replyobj.user.screen_name +
-      " - " +
-      replyobj.full_text;
+    //Check if tweet is replying to a different tweet
+    inReply();
   } else {
-    document.getElementById("replydiv").style.display = "none";
+    document.getElementById("replydiv").style.display = "none"; //Hide reply elements
   }
 }
+
+function inReply() {
+  document.getElementById("replydiv").style.display = "block"; //Make reply elements visible
+  var replytext = loadFile("reply.txt"); //Load reply tweet data
+  var replyobj = JSON.parse(replytext); //Parse into object
+  document.getElementById("replytext").innerHTML =
+    "In reply to tweet from @" +
+    replyobj.user.screen_name +
+    " - " +
+    replyobj.full_text; //Set element to display correct text.
+}
+
 
 const searchList = document.getElementById("search");
 const searchForm = document.forms[0];
