@@ -25,6 +25,6 @@ function loadFile(filepath){
 function jsonobjmake(text){
   var obj = JSON.parse(text)
   console.log(obj)
-  console.log(obj[0].text)
-  document.getElementById("responsetxt").innerHTML = obj[0].text;
+  console.log(obj[0].full_text)
+  document.getElementById("responsetxt").innerHTML = obj[0].full_text;
 }

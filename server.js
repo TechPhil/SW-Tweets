@@ -21,7 +21,8 @@ var T = new Twitter({
 
 var params = {
   screen_name: "sw_help",
-  count: 1
+  count: 1,
+  tweet_mode: "extended"
 };
 
 function getUpdate() {

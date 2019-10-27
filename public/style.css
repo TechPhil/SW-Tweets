@@ -10,6 +10,9 @@ h1 {
   font-style: italic;
   color: #fff;
 }
+h3 {
+  color: #000
+}
 .column {
   float: left;
 }

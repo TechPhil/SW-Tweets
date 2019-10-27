@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/style.css" />
 
     <!-- import the webpage's javascript file -->
-
   </head>
   <body>
     <div class="row">
@@ -42,24 +41,26 @@
           charset="utf-8"
         ></script>
       </div>
-      <div class="column">
-        <div class = "row">
+      <div class="column panel">
+        <div class="row">
           <h1>
-            Welcome to the SWR Bingo Bot Admin Panel! 
+            Welcome to the SWR Bingo Bot Admin Panel!
           </h1>
         </div>
-        <div class = "row">
-          <div id="responsetxt">
-            ResponseText
+        <div class="row">
+          <div>
+            <h3>
+              Latest Reply from <a href="www.twitter.com/sw_help">@SW_Help</a>
+            </h3>
+            <h3 id="responsetxt">
+              ResponseText
+            </h3>
+            
           </div>
         </div>
-        <center>
-          
-        </center>
+        <center></center>
       </div>
     </div>
-    <iframe src="response.txt" id="responsefile" style="display: none">
-    </iframe>
   </body>
-      <script src="script.js"></script>
+  <script src="script.js"></script>
 </html>
