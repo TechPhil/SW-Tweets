@@ -39,8 +39,9 @@ getUpdate();
 setInterval(getUpdate, 10000);
 function dothingshere(response) {
   console.log("dothingshere called");
-  
   fs.writeFile("public/response.txt", response.body);
+  var tweetobj = response.body;
+  if(tweetobj[0].)
   
 }
 

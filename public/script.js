@@ -37,6 +37,13 @@ function jsonobjmake(text) {
     0,
     -11
   );
+  if(obj[0].in_reply_to_status_id){
+    document.getElementById("replydiv").style.display = 'block';
+    var replytext = loadFile("reply.txt");
+    document.getElementByID("replytext").innerHTML = replytext;
+  } else {
+    document.getElementById("replydiv").style.display = 'none';
+  }
 }
 
 const searchList = document.getElementById("search");
