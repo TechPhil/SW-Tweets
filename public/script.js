@@ -12,6 +12,8 @@ function updateText() {
   var responsetext = loadFile("response.txt");
   document.getElementById("responsetxt").innerHTML = responsetext;
   jsonobjmake(responsetext);
+  
+  var searchtext = loadFile("searchterms.txt");
 }
 
 function loadFile(filepath) {
